@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1_4_Remove-Odd-Occurences",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1_5_Count-of-Occurences", "1_5_Count-of-Occurences\1_5_Count-of-Occurences.csproj", "{7CF4D563-6115-425A-AF05-E0F27EA40BEA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1_6_Implement-Reversed-List", "1_6_Implement-Reversed-List\1_6_Implement-Reversed-List.csproj", "{0BA4438E-A216-4980-9A78-8955BC18DEAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1_7_Implement-Linked-List", "1_7_Implement-Linked-List\1_7_Implement-Linked-List.csproj", "{AEA49398-C683-4203-880A-A21931A103A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{7CF4D563-6115-425A-AF05-E0F27EA40BEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CF4D563-6115-425A-AF05-E0F27EA40BEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CF4D563-6115-425A-AF05-E0F27EA40BEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BA4438E-A216-4980-9A78-8955BC18DEAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BA4438E-A216-4980-9A78-8955BC18DEAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BA4438E-A216-4980-9A78-8955BC18DEAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BA4438E-A216-4980-9A78-8955BC18DEAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEA49398-C683-4203-880A-A21931A103A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEA49398-C683-4203-880A-A21931A103A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEA49398-C683-4203-880A-A21931A103A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEA49398-C683-4203-880A-A21931A103A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
