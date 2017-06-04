@@ -43,9 +43,22 @@ namespace _3_0_Tree
             }
         }
 
+        private void DFS(Tree<T> tree, List<T> result)
+        {
+            foreach(var child in tree.Children)
+            {
+                this.DFS(child, result);
+            }
+
+            result.Add(tree.Value);
+        }
+
         public IEnumerable<T> OrderDFS()
         {
-            throw new NotImplementedException();
+            var result = new List<T>();
+            this.DFS(this, result);
+
+            return result;
         }
 
         public IEnumerable<T> OrderBFS()
