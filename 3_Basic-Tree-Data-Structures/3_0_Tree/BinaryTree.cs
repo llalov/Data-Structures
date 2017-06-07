@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace _3_0_Tree
 {
@@ -35,12 +32,33 @@ namespace _3_0_Tree
 
         public void EachInOrder(Action<T> action)
         {
-            throw new NotImplementedException();
+            if (this.LeftChild != null)
+            {
+                this.LeftChild.EachInOrder(action);
+            }
+
+            action(this.Value);
+
+            if (this.RightChild != null)
+            {
+                this.RightChild.EachInOrder(action);
+            }
         }
 
         public void EachPostOrder(Action<T> action)
         {
-            throw new NotImplementedException();
+
+            if (this.LeftChild != null)
+            {
+                this.LeftChild.EachPostOrder(action);
+            }
+
+            if (this.RightChild != null)
+            {
+                this.RightChild.EachPostOrder(action);
+            }
+
+            action(this.Value);
         }
     }
 }
