@@ -6,6 +6,7 @@ namespace _3_0_Tree
     public class Tree<T>
     {
         public T Value { get; set; }
+        public Tree<T> Parent { get; set;}
         public IList<Tree<T>> Children { get; private set;}
 
         //Constructor
@@ -16,6 +17,7 @@ namespace _3_0_Tree
             
             foreach (var child in children)
             {
+                child.Parent = this;
                 this.Children.Add(child);
             }
         }
