@@ -2,13 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _3_1_Root_Node
 {
     public class Program
     {
+        //#### Defining methods and storing the data ####
+        //#### START ####
+
         static Dictionary<int, Tree<int>> nodesByValue = new Dictionary<int, Tree<int>>();
 
         static Tree<int> GetNodesByValue(int value)
@@ -19,6 +20,7 @@ namespace _3_1_Root_Node
             }
             return nodesByValue[value];
         }
+
         public static void AddEdge(int parent, int child)
         {
             Tree<int> parentNode = GetNodesByValue(parent);
@@ -33,7 +35,7 @@ namespace _3_1_Root_Node
             return nodesByValue.Values.FirstOrDefault(x => x.Parent == null);
         }
 
-        static void ReadTree()
+        static void ReadTree ()
         {
 
             int nodeCount = int.Parse(Console.ReadLine());
@@ -43,7 +45,18 @@ namespace _3_1_Root_Node
                 string[] edge = Console.ReadLine().Split(' ');
                 AddEdge(int.Parse(edge[0]), int.Parse(edge[1]));
             }
-           
+
+        }
+
+        //#### Defining methods and storing the data ####
+        //#### END ####
+
+        //#### Main execution and running the program ####
+        static void Main()
+        {
+            ReadTree();
+            Tree<int> rootNode = GetRootNode();
+            rootNode.Print();
         }
     }
 }
