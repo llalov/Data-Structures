@@ -35,9 +35,8 @@ namespace _3_1_Root_Node
             return nodesByValue.Values.FirstOrDefault(x => x.Parent == null);
         }
 
-        static void ReadTree ()
+        static void ReadTree()
         {
-
             int nodeCount = int.Parse(Console.ReadLine());
 
             for (int i = 0; i < nodeCount; i++)
@@ -48,6 +47,14 @@ namespace _3_1_Root_Node
 
         }
 
+        static List<Tree<int>> GetLeafNodes()
+        {
+            List<Tree<int>> result = new List<Tree<int>>();
+            result = nodesByValue.Values.Where(x => x.Children.Count == 0).ToList();
+
+            return result;
+        }
+
         //#### Defining methods and storing the data ####
         //#### END ####
 
@@ -56,7 +63,18 @@ namespace _3_1_Root_Node
         {
             ReadTree();
             Tree<int> rootNode = GetRootNode();
+
+            //Prints the tree
+            Console.WriteLine("Printing the tree:");
             rootNode.Print();
+
+            //Prints the leaf nodes
+            Console.WriteLine("Leaf nodes:");
+            List<Tree<int>> leafNodes = GetLeafNodes();
+            foreach(var node in leafNodes)
+            {
+                node.Print();
+            }
         }
     }
 }
