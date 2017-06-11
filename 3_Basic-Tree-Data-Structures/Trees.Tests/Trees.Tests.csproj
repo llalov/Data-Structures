@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="UnitTestBinaryTree.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTestsBST.cs" />
     <Compile Include="UnitTestTree.cs" />
   </ItemGroup>
   <ItemGroup>
