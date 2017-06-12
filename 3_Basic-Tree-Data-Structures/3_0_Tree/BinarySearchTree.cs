@@ -60,9 +60,29 @@ namespace _3_0_Tree
             return currentNode;
         }
 
+        private Node Insert(Node node, T value)
+        {
+            if (node == null)
+            {
+                node = new Node(value);
+            }
+
+            else if (value.CompareTo(node.Value) > 0)
+            {
+                node.Right = this.Insert(node.Right, value);
+            }
+
+            else if (value.CompareTo(node.Value) < 0)
+            {
+                node.Left = this.Insert(node.Left, value);
+            }
+
+            return node;
+        }
+
         public void Insert(T value)
         {
-            throw new NotImplementedException();
+            this.root = this.Insert(this.root, value);
         }
 
         public bool Contains(T value)
