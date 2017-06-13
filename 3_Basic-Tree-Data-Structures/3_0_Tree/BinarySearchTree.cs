@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _3_0_Tree
 {
@@ -80,6 +77,27 @@ namespace _3_0_Tree
             return node;
         }
 
+        private void PreOrderCopy(Node node)
+        {
+            if (node == null)
+            {
+                return;
+            }
+
+            this.Insert(node.Value);
+            this.PreOrderCopy(node.Left);
+            this.PreOrderCopy(node.Right);
+        }
+
+        private BinarySearchTree(Node node)
+        {
+            this.PreOrderCopy(node);
+        }
+
+        public BinarySearchTree()
+        {
+        }
+
         public void Insert(T value)
         {
             this.root = this.Insert(this.root, value);
@@ -94,12 +112,30 @@ namespace _3_0_Tree
 
         public void DeleteMin()
         {
-            throw new NotImplementedException();
+            if (this.root == null) { return; }
+            Node parent = null;
+            Node current = this.root;
+            while (current.Left != null)
+            {
+                parent = current;
+                current = parent.Left;
+            }
+
+            if (parent == null)
+            {
+                this.root = current.Right;
+            }
+            else
+            {
+                parent.Left = current.Right;
+            }
         }
 
         public BinarySearchTree<T> Search(T item)
         {
-            throw new NotImplementedException();
+            Node newNode = this.FindElement(item);
+
+            return new BinarySearchTree<T>(newNode);
         }
 
         public IEnumerable<T> Range(T startRange, T endRange)
@@ -113,11 +149,11 @@ namespace _3_0_Tree
         }
     }
 
-    public class Launcher
-    {
-        public static void Main(string[] args)
-        {
+   // public class Launcher
+   // {
+   //     public static void Main(string[] args)
+    //    {
 
-        }
-    }
+    //    }
+    //}
 }
