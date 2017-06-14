@@ -131,6 +131,27 @@ namespace _3_0_Tree
             }
         }
 
+        public void DeleteMax()
+        {
+            if (this.root == null) { return; }
+            Node parent = null;
+            Node current = this.root;
+
+            while (current.Right != null)
+            {
+                parent = current;
+                current = parent.Right;
+            }
+            if (parent == null)
+            {
+                this.root = this.root.Left;
+            }
+            else
+            {
+                parent.Right = current.Left;
+            }
+        }
+
         public BinarySearchTree<T> Search(T item)
         {
             Node newNode = this.FindElement(item);
@@ -148,12 +169,4 @@ namespace _3_0_Tree
             this.EachInOrder(this.root, action);
         }
     }
-
-   // public class Launcher
-   // {
-   //     public static void Main(string[] args)
-    //    {
-
-    //    }
-    //}
 }
