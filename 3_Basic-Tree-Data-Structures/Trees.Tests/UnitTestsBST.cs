@@ -128,6 +128,33 @@ namespace Trees.Tests
         }
 
         [TestMethod]
+        public void Insert_Multiple_DeleteMax_Should_Work_Correctly()
+        {
+            //Arrange
+            BinarySearchTree<int> bst = new BinarySearchTree<int>();
+            bst.Insert(1);
+            bst.Insert(3);
+            bst.Insert(4);
+            bst.Insert(5);
+            bst.Insert(8);
+            bst.Insert(9);
+            bst.Insert(10);
+            bst.Insert(37);
+            bst.Insert(39);
+            bst.Insert(45);
+            
+            //Act
+            bst.DeleteMax();
+            List<int> nodes = new List<int>();
+            bst.EachInOrder(nodes.Add);
+
+            //Assert
+            int[] expectedNodes = new int[] { 1, 3, 4, 5, 8, 9, 10, 37, 39 };
+            CollectionAssert.AreEqual(expectedNodes, nodes);
+        }
+
+
+        [TestMethod]
         public void Search_NonExistingElement_ShouldReturnEmptyTree()
         {
             // Arrange
