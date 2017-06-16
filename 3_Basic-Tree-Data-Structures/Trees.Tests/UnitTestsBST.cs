@@ -201,6 +201,7 @@ namespace Trees.Tests
         [TestMethod]
         public void Range_ExistingElements_ShouldReturnCorrectElements()
         {
+            //Arrange
             BinarySearchTree<int> bst = new BinarySearchTree<int>();
 
             bst.Insert(10);
@@ -225,6 +226,7 @@ namespace Trees.Tests
         [TestMethod]
         public void Range_ExistingElements_ShouldReturnCorrectCount()
         {
+            //Arrange
             BinarySearchTree<int> bst = new BinarySearchTree<int>();
 
             bst.Insert(10);
@@ -245,5 +247,32 @@ namespace Trees.Tests
             int[] expectedNodes = new int[] { 4, 5, 8, 9, 10, 37 };
             Assert.AreEqual(expectedNodes.Length, result.ToArray().Length);
         }
+
+        [TestMethod]
+        public void Insert_Multiple_Count_Should_Work_Correctly()
+        {
+            //Arrange
+            BinarySearchTree<int> bst = new BinarySearchTree<int>();
+            bst.Insert(10);
+            bst.Insert(5);
+            bst.Insert(3);
+            bst.Insert(1);
+            bst.Insert(4);
+            bst.Insert(8);
+            bst.Insert(9);
+            bst.Insert(37);
+            bst.Insert(39);
+            bst.Insert(45);
+
+            //Act
+            bst.DeleteMin();
+            bst.Insert(76);
+            bst.DeleteMin();
+
+            //Assert
+            Assert.AreEqual(9, bst.Count());
+
+        }
+
     }
 }

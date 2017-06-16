@@ -17,7 +17,22 @@ namespace _3_0_Tree
             public T Value { get; set; }
             public Node Left { get; set; }
             public Node Right { get;  set;}
+            public int Count { get; set;}
 
+        }
+        public int Count()
+        {
+            return this.Count(this.root);
+        }
+
+        private int Count(Node node)
+        {
+            if (node == null)
+            {
+                return 0;
+            }
+
+            return node.Count;
         }
 
         private void EachInOrder(Node node, Action<T> action)
@@ -74,6 +89,7 @@ namespace _3_0_Tree
                 node.Left = this.Insert(node.Left, value);
             }
 
+            node.Count = 1 + this.Count(node.Left) + this.Count(node.Right);
             return node;
         }
 
@@ -113,43 +129,39 @@ namespace _3_0_Tree
         public void DeleteMin()
         {
             if (this.root == null) { return; }
-            Node parent = null;
-            Node current = this.root;
-            while (current.Left != null)
+            this.root = this.DeleteMin(this.root);
+        }
+
+        private Node DeleteMin(Node node)
+        {
+            if (node.Left == null)
             {
-                parent = current;
-                current = parent.Left;
+                return node.Right;
             }
 
-            if (parent == null)
-            {
-                this.root = current.Right;
-            }
-            else
-            {
-                parent.Left = current.Right;
-            }
+            node.Left = this.DeleteMin(node.Left);
+            node.Count--;
+
+            return node;
         }
 
         public void DeleteMax()
         {
             if (this.root == null) { return; }
-            Node parent = null;
-            Node current = this.root;
+            this.root = this.DeleteMax(this.root);
+        }
 
-            while (current.Right != null)
+        private Node DeleteMax(Node node)
+        {
+            if (node.Right == null)
             {
-                parent = current;
-                current = parent.Right;
+                return node.Left;
             }
-            if (parent == null)
-            {
-                this.root = this.root.Left;
-            }
-            else
-            {
-                parent.Right = current.Left;
-            }
+
+            node.Right = this.DeleteMax(node.Right);
+            node.Count--;
+
+            return node;
         }
 
         public BinarySearchTree<T> Search(T item)

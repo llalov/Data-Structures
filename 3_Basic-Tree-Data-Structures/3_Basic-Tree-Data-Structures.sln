@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trees.Tests", "Trees.Tests\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3_1_Root-Node", "3_1_Root-Node\3_1_Root-Node.csproj", "{5222140C-BBC0-4408-B49C-F30E429A1558}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3_2_Binary-Search-Tree-Exercises", "3_2_Binary-Search-Tree-Exercises\3_2_Binary-Search-Tree-Exercises.csproj", "{D018FDE8-77B6-40F5-902E-8F680387CA2D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{5222140C-BBC0-4408-B49C-F30E429A1558}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5222140C-BBC0-4408-B49C-F30E429A1558}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5222140C-BBC0-4408-B49C-F30E429A1558}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D018FDE8-77B6-40F5-902E-8F680387CA2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D018FDE8-77B6-40F5-902E-8F680387CA2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D018FDE8-77B6-40F5-902E-8F680387CA2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D018FDE8-77B6-40F5-902E-8F680387CA2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
