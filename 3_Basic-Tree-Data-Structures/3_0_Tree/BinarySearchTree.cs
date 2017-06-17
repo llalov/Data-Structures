@@ -20,10 +20,6 @@ namespace _3_0_Tree
             public int Count { get; set;}
 
         }
-        public int Count()
-        {
-            return this.Count(this.root);
-        }
 
         private int Count(Node node)
         {
@@ -110,28 +106,6 @@ namespace _3_0_Tree
             this.PreOrderCopy(node);
         }
 
-        public BinarySearchTree()
-        {
-        }
-
-        public void Insert(T value)
-        {
-            this.root = this.Insert(this.root, value);
-        }
-
-        public bool Contains(T value)
-        {
-            Node current = this.FindElement(value);
-
-            return current != null;
-        }
-
-        public void DeleteMin()
-        {
-            if (this.root == null) { return; }
-            this.root = this.DeleteMin(this.root);
-        }
-
         private Node DeleteMin(Node node)
         {
             if (node.Left == null)
@@ -143,12 +117,6 @@ namespace _3_0_Tree
             node.Count--;
 
             return node;
-        }
-
-        public void DeleteMax()
-        {
-            if (this.root == null) { return; }
-            this.root = this.DeleteMax(this.root);
         }
 
         private Node DeleteMax(Node node)
@@ -164,6 +132,38 @@ namespace _3_0_Tree
             return node;
         }
 
+        private int Rank(T element, Node node)
+        {
+            if (node == null)
+            {
+                return 0;
+            }
+
+            int compare = element.CompareTo(node.Value);
+
+            if (compare > 0)
+            {
+                return 1 + this.Count(node.Left) + this.Rank(element, node.Right);
+            }
+
+            if (compare < 0)
+            {
+                return this.Rank(element, node.Left);
+            }
+
+            return this.Count(node.Left);
+        }
+
+        public int Count()
+        {
+            return this.Count(this.root);
+        }
+
+        public void EachInOrder(Action<T> action)
+        {
+            this.EachInOrder(this.root, action);
+        }
+
         public BinarySearchTree<T> Search(T item)
         {
             Node newNode = this.FindElement(item);
@@ -176,9 +176,39 @@ namespace _3_0_Tree
             throw new NotImplementedException();
         }
 
-        public void EachInOrder(Action<T> action)
+        public void Insert(T value)
         {
-            this.EachInOrder(this.root, action);
+            this.root = this.Insert(this.root, value);
         }
+
+        public BinarySearchTree()
+        {
+        }
+
+        public void DeleteMin()
+        {
+            if (this.root == null) { return; }
+            this.root = this.DeleteMin(this.root);
+        }
+
+        public void DeleteMax()
+        {
+            if (this.root == null) { return; }
+            this.root = this.DeleteMax(this.root);
+        }
+
+        public bool Contains(T value)
+        {
+            Node current = this.FindElement(value);
+
+            return current != null;
+        }
+
+        public int Rank(T element)
+        {
+            return this.Rank(element, this.root);
+        }
+
+        
     }
 }

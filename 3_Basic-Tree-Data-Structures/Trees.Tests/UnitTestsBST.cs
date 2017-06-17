@@ -274,5 +274,30 @@ namespace Trees.Tests
 
         }
 
+        [TestMethod]
+        public void Insert_Multiple_Rank_Should_Work_Correctly()
+        {
+            //Arrange
+            BinarySearchTree<int> bst = new BinarySearchTree<int>();
+
+            bst.Insert(1);
+            bst.Insert(3);
+            bst.Insert(4);
+            bst.Insert(5);
+            bst.Insert(8);
+            bst.Insert(9);
+            bst.Insert(10);
+            bst.Insert(37);
+            bst.Insert(39);
+            bst.Insert(45);
+
+            //Act
+            int result = bst.Rank(8);
+            int[] expectedNodes = new int[] { 1, 3, 4, 5 };
+
+            //Assert
+            Assert.AreEqual(result, expectedNodes.Count());
+        }
+
     }
 }
