@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace _4_0_BinaryHeap
 {
@@ -22,11 +23,23 @@ namespace _4_0_BinaryHeap
             return parentIndex;
         }
 
+        private int LeftChild(int parentIndex)
+        {
+            int leftChildIndex = (2 * parentIndex) + 1;
+            return leftChildIndex;
+        }
+
+        private int RightChild(int parentIndex)
+        {
+            int rightChildIndex = (2 * parentIndex) + 2;
+            return rightChildIndex;
+        }
+
         private void Swap(int firstElement, int secondElement)
         {
-            this.heap[secondElement] = this.heap[firstElement]; 
+            T tmp = this.heap[firstElement]; 
             this.heap[firstElement] = this.heap[secondElement];
-        
+            this.heap[secondElement] = tmp;
         }
 
         private void HeapifyUp(int index)
@@ -41,7 +54,21 @@ namespace _4_0_BinaryHeap
 
         private void HeapifyDown(int index)
         {
-            //TODO
+            while (index < this.heap.Count / 2)
+            {
+                int leftChild = this.LeftChild(index);
+                int rightChild = this.RightChild(index);
+                bool hasRight = this.heap.Count >= rightChild + 1;
+
+                if (hasRight && IsLess(leftChild, rightChild))
+                {
+                    leftChild = leftChild + 1;
+                }
+
+                if (IsLess(leftChild, index)) break;
+                this.Swap(index, leftChild);
+                index = leftChild;
+            }
         }
 
         public BinaryHeap()
@@ -76,8 +103,8 @@ namespace _4_0_BinaryHeap
             }
 
             T item = this.heap[0];
-            this.Swap(0, this.heap.Count - 1);
-            this.heap.RemoveAt(this.heap.Count - 1);
+            this.Swap(0, this.heap.Count() - 1);
+            this.heap.RemoveAt(this.heap.Count() - 1);
             this.HeapifyDown(0);
 
             return item;
