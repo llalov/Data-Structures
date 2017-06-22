@@ -7,24 +7,25 @@ namespace _4_0_BinaryHeap
     {
         private List<T> heap;
 
-        private bool IsLess(T parent, int index)
+        private bool IsLess(int parentIndex, int index)
         {
             T child = this.heap[index];
+            T parent = this.heap[parentIndex];
             bool result = child.CompareTo(parent) > 0;
 
             return result;
         }
 
-        private T Parent(int index)
+        private int Parent(int childIndex)
         {
-            return this.heap[index - 1];
+            int parentIndex = (childIndex - 1) / 2;
+            return parentIndex;
         }
 
-        private void Swap(int childIndex, T parent)
+        private void Swap(int firstElement, int secondElement)
         {
-            int parentIndex = this.heap.IndexOf(parent);
-            this.heap[parentIndex] = this.heap[childIndex]; 
-            this.heap[childIndex] = parent;
+            this.heap[secondElement] = this.heap[firstElement]; 
+            this.heap[firstElement] = this.heap[secondElement];
         
         }
 
@@ -33,9 +34,14 @@ namespace _4_0_BinaryHeap
             while (index > 0 && IsLess(Parent(index), index))
             {
                 this.Swap(index, Parent(index));
-                int parentIndex = this.heap.IndexOf(Parent(index));
+                int parentIndex = Parent(index);
                 index = parentIndex;
             }
+        }
+
+        private void HeapifyDown(int index)
+        {
+            //TODO
         }
 
         public BinaryHeap()
@@ -64,7 +70,17 @@ namespace _4_0_BinaryHeap
 
         public T Pull()
         {
-            throw new NotImplementedException();
+            if (this.Count <= 0)
+            {
+                throw new InvalidOperationException();
+            }
+
+            T item = this.heap[0];
+            this.Swap(0, this.heap.Count - 1);
+            this.heap.RemoveAt(this.heap.Count - 1);
+            this.HeapifyDown(0);
+
+            return item;
         }
     }
 
