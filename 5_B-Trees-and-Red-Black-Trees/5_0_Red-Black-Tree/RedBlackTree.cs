@@ -6,6 +6,8 @@ namespace _5_0_Red_Black_Tree
     public class RedBlackTree<T> : IBinarySearchTree<T> where T : IComparable
     {
         private Node root;
+        private const bool Red = true;
+        private const bool Black = false;
 
         private Node FindElement(T element)
         {
@@ -30,6 +32,24 @@ namespace _5_0_Red_Black_Tree
             return current;
         }
 
+        private bool isRed(Node node)
+        {
+            if (node == null)
+            {
+                return false;
+            }
+
+            return node.Color == Red;
+        }
+
+        private Node RotateLeft(Node node)
+        {
+            Node temp = node.Right;
+
+            //TODO: Rotate left logic
+            return temp;
+        }
+
         private void PreOrderCopy(Node node)
         {
             if (node == null)
@@ -46,6 +66,7 @@ namespace _5_0_Red_Black_Tree
         {
             if (node == null)
             {
+                //TODO add clolor to the construnctor
                 node = new Node(element);
             }
             else if (element.CompareTo(node.Value) < 0)
@@ -332,12 +353,15 @@ namespace _5_0_Red_Black_Tree
 
         private class Node
         {
-            public Node(T value)
+            public Node(T value, bool color)
             {
                 this.Value = value;
+                this.Color = color;
             }
 
             public T Value { get; }
+            public bool Color { get; set; }
+
             public Node Left { get; set; }
             public Node Right { get; set; }
 
