@@ -45,8 +45,25 @@ namespace _5_0_Red_Black_Tree
         private Node RotateLeft(Node node)
         {
             Node temp = node.Right;
+            node.Right = temp.Left;
+            temp.Left = node;
+            temp.Color = node.Color;
+            node.Color = Red;
+            temp.Count = node.Count;
+            node.Count = 1 + Count(node.Left) + Count(node.Right);
+            
+            return temp;
+        }
 
-            //TODO: Rotate left logic
+        private Node RotateRight(Node node)
+        {
+            Node temp = node.Left;
+            node.Left = temp.Right;
+            temp.Right = node;
+            temp.Color = node.Color;
+            node.Color = Red;
+            temp.Count = node.Count;
+            node.Count = 1 + Count(node.Left) + Count(node.Right);
             return temp;
         }
 
