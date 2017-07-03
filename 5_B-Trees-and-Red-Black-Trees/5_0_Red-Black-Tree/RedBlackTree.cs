@@ -32,7 +32,7 @@ namespace _5_0_Red_Black_Tree
             return current;
         }
 
-        private bool isRed(Node node)
+        private bool IsRed(Node node)
         {
             if (node == null)
             {
@@ -67,6 +67,13 @@ namespace _5_0_Red_Black_Tree
             return temp;
         }
 
+        private void FlipColors(Node node)
+        {
+            node.Color = Red;
+            node.Left.Color = Black;
+            node.Right.Color = Black;
+        }
+
         private void PreOrderCopy(Node node)
         {
             if (node == null)
@@ -83,9 +90,10 @@ namespace _5_0_Red_Black_Tree
         {
             if (node == null)
             {
-                //TODO add clolor to the construnctor
-                node = new Node(element);
+                node = new Node(element, Red);
             }
+
+            //Insertion recursive calls
             else if (element.CompareTo(node.Value) < 0)
             {
                 node.Left = this.Insert(element, node.Left);
@@ -93,6 +101,22 @@ namespace _5_0_Red_Black_Tree
             else if (element.CompareTo(node.Value) > 0)
             {
                 node.Right = this.Insert(element, node.Right);
+            }
+
+            //Rotate elements if nessecessary
+            if (this.IsRed(node.Right) && !this.IsRed(node.Left) )
+            {
+                node = this.RotateLeft(node);
+            }
+
+            if (this.IsRed(node.Left) && this.IsRed(node.Left.Left))
+            {
+                node = this.RotateRight(node);
+            }
+
+            if (this.IsRed(node.Left) && this.IsRed(node.Right))
+            {
+                this.FlipColors(node);
             }
 
             node.Count = 1 + this.Count(node.Left) + this.Count(node.Right);
@@ -153,10 +177,11 @@ namespace _5_0_Red_Black_Tree
         public RedBlackTree()
         {
         }
-
+      
         public void Insert(T element)
         {
             this.root = this.Insert(element, this.root);
+            this.root.Color = Black;
         }
 
         public bool Contains(T element)
