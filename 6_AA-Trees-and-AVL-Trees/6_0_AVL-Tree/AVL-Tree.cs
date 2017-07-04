@@ -81,6 +81,20 @@ namespace _6_0_AVL_Tree
             action(node.Value);
             this.EachInOrder(node.Right, action);
         }
+
+        private static int Height(Node<T> node)
+        {
+            if (node == null)
+            {
+                return 0;
+            }
+            return node.Height;
+        }
+
+        private static void UpdateHeight(Node<T> node)
+        {
+            node.Height = Math.Max(Height(node.Left), Height(node.Right)) + 1;
+        }
     }
 
 }
