@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6_0_AVL-Tree", "6_0_AVL-Tre
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AVL-Tree.Tests", "AVL-Tree.Tests\AVL-Tree.Tests.csproj", "{EC6F034A-CD81-4C20-9F3D-AA95E1869923}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6_1_Exercise_First-Last-List", "6_1_Exercise_First-Last-List\6_1_Exercise_First-Last-List.csproj", "{EFD57A90-9C48-4B1E-875B-43B515511D25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "First-Last-List.Tests", "First-Last-List.Tests\First-Last-List.Tests.csproj", "{D93627C5-9B66-4490-83E9-2E396194B43C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{EC6F034A-CD81-4C20-9F3D-AA95E1869923}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC6F034A-CD81-4C20-9F3D-AA95E1869923}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC6F034A-CD81-4C20-9F3D-AA95E1869923}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFD57A90-9C48-4B1E-875B-43B515511D25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFD57A90-9C48-4B1E-875B-43B515511D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFD57A90-9C48-4B1E-875B-43B515511D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFD57A90-9C48-4B1E-875B-43B515511D25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D93627C5-9B66-4490-83E9-2E396194B43C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D93627C5-9B66-4490-83E9-2E396194B43C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D93627C5-9B66-4490-83E9-2E396194B43C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D93627C5-9B66-4490-83E9-2E396194B43C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
