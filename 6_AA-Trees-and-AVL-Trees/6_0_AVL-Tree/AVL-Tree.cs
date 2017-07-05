@@ -47,6 +47,8 @@ namespace _6_0_AVL_Tree
                 node.Right = this.Insert(node.Right, item);
             }
 
+            node = Balance(node);
+            UpdateHeight(node);
             return node;
         }
 
@@ -95,6 +97,58 @@ namespace _6_0_AVL_Tree
         {
             node.Height = Math.Max(Height(node.Left), Height(node.Right)) + 1;
         }
+
+        private static Node<T> RotateLeft(Node<T> node)
+        {
+            var right = node.Right;
+            node.Right = node.Right.Left;
+            right.Left = node;
+
+            UpdateHeight(node);
+            return right;
+        }
+
+        private static Node<T> RotateRight(Node<T> node)
+        {
+            var left = node.Left;
+            node.Left = node.Left.Right;
+            left.Right = node;
+
+            UpdateHeight(node);
+            return left;
+        }
+
+        private Node<T> Balance(Node<T> node)
+        {
+            var balance = Height(node.Left) - Height(node.Right);
+            if (balance > 1) //left child is heavy
+            {
+                //rotate right
+                var childBalance = Height(node.Left.Left) - Height(node.Left.Right);
+                if (childBalance < 0) // double right
+                {
+                    node.Left = RotateLeft(node.Left);
+                }
+
+                node = RotateRight(node);
+            }
+            else if (balance < -1) //right child is heavy
+            {
+                //rotate left
+                var childBalance = Height(node.Right.Left) - Height(node.Right.Right);
+                if (childBalance > 0) //double left
+                {
+                    node.Right = RotateRight(node.Right);
+                }
+
+                node = RotateLeft(node);
+            }
+
+            return node;
+        }
+
+
+
     }
 
 }
