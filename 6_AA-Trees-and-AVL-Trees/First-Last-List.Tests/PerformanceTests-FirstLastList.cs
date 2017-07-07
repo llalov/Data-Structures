@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using _6_1_Exercise_First_Last_List;
+using System.Linq;
 
 namespace First_Last_List.Tests
 {
