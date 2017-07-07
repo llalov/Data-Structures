@@ -8,6 +8,7 @@ namespace _6_1_Exercise_First_Last_List
     {
         private List<T> itemsList = new List<T>();
         private OrderedBag<T> treeWithDuplicates = new OrderedBag<T>();
+        private OrderedBag<T> reversedTreeWithDuplicates = new OrderedBag<T>((x, y) => - x.CompareTo(y));
 
         public int Count
         {
@@ -21,12 +22,14 @@ namespace _6_1_Exercise_First_Last_List
         {
             itemsList.Add(element);
             treeWithDuplicates.Add(element);
+            reversedTreeWithDuplicates.Add(element);
         }
 
         public void Clear()
         {
             itemsList.Clear();
             treeWithDuplicates.Clear();
+            reversedTreeWithDuplicates.Clear();
         }
 
         public IEnumerable<T> First(int count)
@@ -55,13 +58,18 @@ namespace _6_1_Exercise_First_Last_List
 
         public IEnumerable<T> Max(int count)
         {
-            if (count > treeWithDuplicates.Count)
+            if (count > reversedTreeWithDuplicates.Count)
             {
                 throw new ArgumentOutOfRangeException();
             }
-            for (int i = treeWithDuplicates.Count - 1; i >= treeWithDuplicates.Count - count; i--)
+            foreach (var item in reversedTreeWithDuplicates)
             {
-                yield return treeWithDuplicates[i];
+                if (count <= 0)
+                {
+                    break;
+                }
+                yield return item;
+                count--;
             }
         }
 
@@ -71,27 +79,27 @@ namespace _6_1_Exercise_First_Last_List
             {
                 throw new ArgumentOutOfRangeException();
             }
-            for (int i = 0; i < count; i++)
+            foreach (var item in treeWithDuplicates)
             {
-                yield return treeWithDuplicates[i];
+                if (count <= 0)
+                {
+                    break;
+                }
+                yield return item;
+                count--;
             }
         }
 
         public int RemoveAll(T element)
         {
-            int initialCount = itemsList.Count;
+            foreach (var item in treeWithDuplicates.Range(element, true, element, true))
+            {
+                itemsList.Remove(item);
+            }
 
-            if (itemsList.Contains(element))
-            {
-                itemsList.RemoveAll(x => x.Equals(element));
-                treeWithDuplicates.RemoveAll(x => x.Equals(element));
-                return initialCount - itemsList.Count;    
-            }
-            else
-            {
-                return 0;
-            }
-            
+            var count = treeWithDuplicates.RemoveAllCopies(element);
+            reversedTreeWithDuplicates.RemoveAllCopies(element);
+            return count;
         }
     }
 
