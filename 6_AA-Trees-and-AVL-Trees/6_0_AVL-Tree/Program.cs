@@ -1,6 +1,5 @@
 ﻿using System;
 
-
 namespace _6_0_AVL_Tree
 {
     class Program

@@ -30,6 +30,16 @@ namespace _6_0_AVL_Tree
             this.EachInOrder(this.root, action);
         }
 
+        public void Delete(int item)
+        {
+            this.root = this.Delete(this.root, item);
+        }
+
+        public void DeleteMin()
+        {
+            this.root = this.DeleteMin(this.root);
+        }
+
         private Node<T> Insert(Node<T> node, T item)
         {
             if (node == null)
@@ -147,8 +157,77 @@ namespace _6_0_AVL_Tree
             return node;
         }
 
+        private Node<T> GetMin(Node<T> node)
+        {
+            if (node == null)
+            {
+                return null;
+            }
 
+            if (node.Left == null)
+            {
+                return node;
+            }
 
+            return GetMin(node.Left);
+        }
+
+        private Node<T> DeleteMin(Node<T> node)
+        {
+            if (node == null)
+            {
+                return null;
+            }
+
+            if (node.Left == null)
+            {
+                return node.Right;
+            }
+
+            node.Left = DeleteMin(node.Left);
+            node = Balance(node);
+            UpdateHeight(node);
+            return node;
+        }
+
+        private Node<T> Delete(Node<T> node, int item)
+        {
+            if (node == null)
+            {
+                return null;
+            }
+
+            var cmp = item.CompareTo(node.Value);
+            if (cmp < 0)
+            {
+                node.Left = Delete(node.Left, item);
+            }
+            else if (cmp > 0)
+            {
+                node.Right = Delete(node.Right, item);
+            }
+            else
+            {
+                if (node.Left == null)
+                {
+                    return node.Right;
+                }
+                else if (node.Right == null)
+                {
+                    return node.Left;
+                }
+                else //the node that needs to be deleted has left and right children
+                {
+                    var min = GetMin(node.Right);
+                    min.Right = DeleteMin(node.Right);
+                    min.Left = node.Left;
+                    node = min;
+                }
+            }
+
+            node = Balance(node);
+            UpdateHeight(node);
+            return node;
+        }
     }
-
 }
