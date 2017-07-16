@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "8_0_Interval-Tree", "8_0_In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interval-Tree.Tests", "Interval-Tree.Tests\Interval-Tree.Tests.csproj", "{CBB4095C-B557-41C9-B8F8-9D61B4F0F17F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "8_1_Kd-Tree", "8_1_Kd-Tree\8_1_Kd-Tree.csproj", "{30709D0C-5198-41F9-B040-20FF3566E11A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{CBB4095C-B557-41C9-B8F8-9D61B4F0F17F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBB4095C-B557-41C9-B8F8-9D61B4F0F17F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBB4095C-B557-41C9-B8F8-9D61B4F0F17F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30709D0C-5198-41F9-B040-20FF3566E11A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30709D0C-5198-41F9-B040-20FF3566E11A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30709D0C-5198-41F9-B040-20FF3566E11A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30709D0C-5198-41F9-B040-20FF3566E11A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
