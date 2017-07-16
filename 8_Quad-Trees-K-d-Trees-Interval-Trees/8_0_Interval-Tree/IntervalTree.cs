@@ -33,12 +33,50 @@ namespace _8_0_Interval_Tree
 
         public Interval SearchAny(double lo, double hi)
         {
-            throw new NotImplementedException();
+            var node = this.root;
+            while(node != null && !node.interval.Intersects(lo, hi))
+            {
+                if (node.left != null && node.left.max > lo)
+                {
+                    node = node.left;
+                }
+                else
+                {
+                    node = node.right;
+                }
+            }
+
+            if (node == null)
+            {
+                return null;
+            }
+
+            return node.interval;
         }
 
         public IEnumerable<Interval> SearchAll(double lo, double hi)
         {
             throw new NotImplementedException();
+        }
+
+        private void UpdateMax(Node node)
+        {
+            var MaxChild = GetMax(node.left, node.right);
+            node.max = GetMax(node, MaxChild).max;
+        }
+
+        private Node GetMax(Node a, Node b)
+        {
+            if (a == null)
+            {
+                return b;
+            }
+            if(b == null)
+            {
+                return a;
+            }
+
+            return a.max > b.max ? a : b;
         }
 
         private void EachInOrder(Node node, Action<Interval> action)
@@ -70,6 +108,7 @@ namespace _8_0_Interval_Tree
                 node.right = Insert(node.right, lo, hi);
             }
 
+            UpdateMax(node);
             return node;
         }
     }
