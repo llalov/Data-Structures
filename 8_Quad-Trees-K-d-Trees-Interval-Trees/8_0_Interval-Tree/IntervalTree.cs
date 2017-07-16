@@ -56,7 +56,35 @@ namespace _8_0_Interval_Tree
 
         public IEnumerable<Interval> SearchAll(double lo, double hi)
         {
-            throw new NotImplementedException();
+            var result = new List<Interval>();
+            this.SearchAll(this.root, lo, hi, result);
+            return result;
+        }
+
+        private void SearchAll(Node node, double lo, double hi, List<Interval> result)
+        { 
+            if (node == null)
+            {
+                return;
+            }
+
+            bool goLeft = node.left != null && node.left.max > lo;
+            bool goRight = node.right !=null && node.right.interval.Lo < hi;
+
+            if (goLeft)
+            {
+                SearchAll(node.left, lo, hi, result);
+            }
+
+            if (node.interval.Intersects(lo,hi))
+            {
+                result.Add(node.interval);
+            }
+                
+            if (goRight)
+            {
+                SearchAll(node.right, lo, hi, result);
+            }
         }
 
         private void UpdateMax(Node node)
