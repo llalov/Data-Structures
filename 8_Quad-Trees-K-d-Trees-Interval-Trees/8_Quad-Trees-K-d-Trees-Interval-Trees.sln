@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interval-Tree.Tests", "Inte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "8_1_Kd-Tree", "8_1_Kd-Tree\8_1_Kd-Tree.csproj", "{30709D0C-5198-41F9-B040-20FF3566E11A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K-dTree.Tests", "K-dTree.Tests\K-dTree.Tests.csproj", "{8147FE2E-6B06-4A4F-9D7C-804D984E32EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{30709D0C-5198-41F9-B040-20FF3566E11A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30709D0C-5198-41F9-B040-20FF3566E11A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30709D0C-5198-41F9-B040-20FF3566E11A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8147FE2E-6B06-4A4F-9D7C-804D984E32EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8147FE2E-6B06-4A4F-9D7C-804D984E32EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8147FE2E-6B06-4A4F-9D7C-804D984E32EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8147FE2E-6B06-4A4F-9D7C-804D984E32EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
