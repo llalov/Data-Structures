@@ -58,8 +58,12 @@ namespace _9_0_HashTable
 
         public TValue Get(TKey key)
         {
-            throw new NotImplementedException();
-            // Note: throw an exception on missing key
+            var element = this.Find(key);
+            if (element == null)
+            {
+                throw new KeyNotFoundException();
+            }
+            return element.Value;
         }
 
         public TValue this[TKey key]
@@ -82,7 +86,19 @@ namespace _9_0_HashTable
 
         public KeyValue<TKey, TValue> Find(TKey key)
         {
-            throw new NotImplementedException();
+            int slotNumber = this.FindSlotNumber(key);
+            var elements = this.slots[slotNumber];
+            if (elements != null)
+            {
+                foreach (var kvp in this.slots[slotNumber])
+                {
+                    if (kvp.Key.Equals(key))
+                    {
+                        return kvp;
+                    }
+                }
+            }
+            return null;
         }
 
         public bool ContainsKey(TKey key)
@@ -116,14 +132,24 @@ namespace _9_0_HashTable
             }
         }
 
-        public IEnumerator<KeyValue<TKey, TValue>> GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return this.GetEnumerator();
+        }
+
+        public IEnumerator<KeyValue<TKey, TValue>> GetEnumerator()
+        {
+            foreach(var elements in this.slots)
+            {
+                if (elements != null)
+                {
+                    foreach (var elelent in elements)
+                    {
+                        yield return elelent;
+                    }
+                }
+            }
         }
 
         private int FindSlotNumber(TKey key)
