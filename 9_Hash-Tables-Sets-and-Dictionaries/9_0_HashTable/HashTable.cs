@@ -8,7 +8,9 @@ namespace _9_0_HashTable
     {
         private LinkedList<KeyValue<TKey, TValue>>[] slots;
         public int Count { get; private set; }
-        private const int initialCapacity = 16;
+
+        public const int InitialCapacity = 16;
+        public const float LoadFactor = 0.75f;
 
         public int Capacity
         {
@@ -20,7 +22,7 @@ namespace _9_0_HashTable
 
         public HashTable()
         {
-            this.slots = new LinkedList<KeyValue<TKey, TValue>>[initialCapacity];
+            this.slots = new LinkedList<KeyValue<TKey, TValue>>[InitialCapacity];
             this.Count = 0;
         }
 
@@ -32,7 +34,7 @@ namespace _9_0_HashTable
 
         public void Add(TKey key, TValue value)
         {
-            //TODO: Grow if needed.
+            this.GrowIfNeeded();
             int slotNumber = this.FindSlotNumber(key);
             if (this.slots[slotNumber] == null)
             {
@@ -53,7 +55,25 @@ namespace _9_0_HashTable
 
         public bool AddOrReplace(TKey key, TValue value)
         {
-            throw new NotImplementedException();
+            this.GrowIfNeeded();
+            int slotNumber = this.FindSlotNumber(key);
+            if (this.slots[slotNumber] == null)
+            {
+                this.slots[slotNumber] = new LinkedList<KeyValue<TKey, TValue>>();
+            }
+
+            foreach (var element in this.slots[slotNumber])
+            {
+                if (element.Key.Equals(key))
+                {
+                    element.Value = value;
+                    return false;
+                }
+            }
+            var newElement = new KeyValue<TKey, TValue>(key, value);
+            this.slots[slotNumber].AddLast(newElement);
+            this.Count++;
+            return true;
         }
 
         public TValue Get(TKey key)
@@ -70,18 +90,25 @@ namespace _9_0_HashTable
         {
             get
             {
-                throw new NotImplementedException();
-                // Note: throw an exception on missing key
+                return this.Get(key);
+                
             }
             set
             {
-                throw new NotImplementedException();
+                 AddOrReplace(key, value);
             }
         }
 
         public bool TryGetValue(TKey key, out TValue value)
         {
-            throw new NotImplementedException();
+            var element = this.Find(key);
+            if (element !=null)
+            {
+                value = element.Value;
+                return true;
+            }
+            value = default(TValue);
+            return false;
         }
 
         public KeyValue<TKey, TValue> Find(TKey key)
@@ -103,12 +130,29 @@ namespace _9_0_HashTable
 
         public bool ContainsKey(TKey key)
         {
-            throw new NotImplementedException();
+            var element = this.Find(key);
+            return element != null;
         }
 
         public bool Remove(TKey key)
         {
-            throw new NotImplementedException();
+            int slotNumber = this.FindSlotNumber(key);
+            var elements = this.slots[slotNumber];
+            if (elements != null)
+            {
+                var currentElement = elements.First;
+                while (currentElement != null)
+                {
+                    if (currentElement.Value.Key.Equals(key))
+                    {
+                        elements.Remove(currentElement);
+                        this.Count--;
+                        return true;
+                    }
+                    currentElement = currentElement.Next;
+                }
+            }
+            return false;
         }
 
         public void Clear()
@@ -160,7 +204,20 @@ namespace _9_0_HashTable
 
         private void GrowIfNeeded()
         {
-            //TODO
+            if ((float)this.Count / this.Capacity >= LoadFactor)
+            {
+                this.Grow();
+            }
+        }
+        private void Grow() 
+        {
+            var newHashTable = new HashTable<TKey, TValue>(this.Capacity * 2);
+            foreach (var element in this)
+            {
+                newHashTable.Add(element.Key, element.Value);
+            }
+            this.slots = newHashTable.slots;
+            this.Count = newHashTable.Count;
         }
     }
 
