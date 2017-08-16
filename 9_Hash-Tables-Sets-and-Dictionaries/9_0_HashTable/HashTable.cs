@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace _9_0_HashTable
 {
+    //HASH TABLE WITH CHAINING
     public class HashTable<TKey, TValue> : IEnumerable<KeyValue<TKey, TValue>>
     {
         private LinkedList<KeyValue<TKey, TValue>>[] slots;
@@ -157,14 +159,15 @@ namespace _9_0_HashTable
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            this.slots = new LinkedList<KeyValue<TKey, TValue>>[InitialCapacity];
+            this.Count = 0;
         }
 
         public IEnumerable<TKey> Keys
         {
             get
             {
-                throw new NotImplementedException();
+                return this.Select(element => element.Key);
             }
         }
 
@@ -172,7 +175,7 @@ namespace _9_0_HashTable
         {
             get
             {
-                throw new NotImplementedException();
+                return this.Select(element => element.Value);
             }
         }
 
