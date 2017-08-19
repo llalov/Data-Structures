@@ -136,6 +136,18 @@ namespace _9_0_HashTable
             return element != null;
         }
 
+        public bool ContainsValue(TValue value)
+        {
+            foreach (var val in this.Values)
+            {
+                if (val.Equals(value))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public bool Remove(TKey key)
         {
             int slotNumber = this.FindSlotNumber(key);
@@ -191,9 +203,9 @@ namespace _9_0_HashTable
             {
                 if (elements != null)
                 {
-                    foreach (var elelent in elements)
+                    foreach (var element in elements)
                     {
-                        yield return elelent;
+                        yield return element;
                     }
                 }
             }
