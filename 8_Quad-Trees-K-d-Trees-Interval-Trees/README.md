@@ -1,11 +1,11 @@
-Special tree structures:
-	Interval tree:(fast interval search)
-		modified BST that stores intervals
-		Efficient search for any or all intervals that overlap a given interval
-		Each node stores sub-tree max endpoint
-		Nodes are ordered by interval start
-	K-d Tree:(fast geometric distance search and retrieval of multidimensional data)
-		space partitioning data structure 	
-		Still a BST
-		Every node splits it's own plane in two parts
-		The nodes values are points (x, y)
+Special tree structures:<br/>
+----<b>Interval tree:<b> (fast interval search)<br/>
+--------modified BST that stores intervals<br/>
+--------Efficient search for any or all intervals that overlap a given interval<br/>
+--------Each node stores sub-tree max endpoint<br/>
+--------Nodes are ordered by interval start<br/>
+----<b>K-d Tree:</b> (fast geometric distance search and retrieval of multidimensional data)<br/>
+--------space partitioning data structure <br/>	
+--------Still a BST<br/>
+--------Every node splits it's own plane in two parts<br/>
+--------The nodes values are points (x, y)<br/>
