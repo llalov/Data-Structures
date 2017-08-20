@@ -1,7 +1,7 @@
 Visualization of List: https://visualgo.net/en/list
 
 Linear structures:<br/>
-	Array:(use when fixed number of elements need processing by index)<br/>
+&#09;Array:(use when fixed number of elements need processing by index)<br/>
 	Lists: (resizeable array-based list.)<br/>
 		List<T>:(Use when elements should be fast added and processed by index)<br/>
 			Count; Add(T); IndexOf(value); Reverse(); Sort(); ToArray(); TrimExcess();<br/>
