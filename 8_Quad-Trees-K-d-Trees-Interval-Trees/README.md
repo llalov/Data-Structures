@@ -1,5 +1,5 @@
 Special tree structures:<br/>
-----<b>Interval tree:<b> (fast interval search)<br/>
+----<b>Interval tree:</b> (fast interval search)<br/>
 --------modified BST that stores intervals<br/>
 --------Efficient search for any or all intervals that overlap a given interval<br/>
 --------Each node stores sub-tree max endpoint<br/>
