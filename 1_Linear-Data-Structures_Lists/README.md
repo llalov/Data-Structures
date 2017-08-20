@@ -1,6 +1,6 @@
 Visualization of List: https://visualgo.net/en/list
 
-Linear structures
+Linear structures:
 	Array:(use when fixed number of elements need processing by index)
 	Lists: (resizeable array-based list.)
 		List<T>:(Use when elements should be fast added and processed by index)
