@@ -4,6 +4,11 @@ Exercises on most common used data structures in programming
 <table>
 <tbody>
 <tr>
+<th colspan="5">
+Data Structure Efficiency 
+</th>
+</tr>
+<tr>
 <td><b>Data structure</b></td>
 <td><b>Add</b></td>
 <td><b>Find</b></td>
@@ -67,39 +72,39 @@ Exercises on most common used data structures in programming
 <td> - </td>
 </tr>
 <tr>
-<td>&#60;T&#62;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
+<td>SortedMultiDictionary&#60;K,V&#62;</td>
+<td>0(log N)</td>
+<td>0(log N)</td>
+<td>0(log N)</td>
+<td> - </td>
 </tr>
 <tr>
-<td>&#60;T&#62;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
+<td>HashSet&#60;T&#62;</td>
+<td>0(1)</td>
+<td>0(1)</td>
+<td>0(1)</td>
+<td> - </td>
 </tr>
 <tr>
-<td>&#60;T&#62;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
+<td>SortedSet&#60;T&#62;</td>
+<td>0(log N)</td>
+<td>0(log N)</td>
+<td>0(log N)</td>
+<td> - </td>
 </tr>
   <tr>
-<td>&#60;T&#62;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
+<td>Bag&#60;T&#62;</td>
+<td>0(1)</td>
+<td>0(1)</td>
+<td>0(1)</td>
+<td> - </td>
 </tr>
   <tr>
-<td>&#60;T&#62;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
+<td>OrderedBag&#60;T&#62;</td>
+<td>0(log N)</td>
+<td>0(log N)</td>
+<td>0(log N)</td>
+<td> - </td>
 </tr>
 </tbody>
 </table>
